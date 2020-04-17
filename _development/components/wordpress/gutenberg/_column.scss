@@ -1,0 +1,22 @@
+.wp-block-column {
+    $gutenberg-column-point: 600px;
+    $gutenberg-no-wrap-point: 782px;
+
+    @include no-first-last-margin;
+
+    @include mq($gutenberg-column-point) {
+        flex-basis: calc(50% - #{space('gutter')});
+    }
+
+    &:nth-child(2n) {
+        @include mq($gutenberg-column-point) {
+            margin-left: space('gutter');
+        }
+    }
+
+    &:not(:first-child) {
+        @include mq($gutenberg-no-wrap-point) {
+            margin-left: space('gutter');
+        }
+    }
+}

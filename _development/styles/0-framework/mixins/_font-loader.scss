@@ -1,0 +1,43 @@
+@charset 'UTF-8';
+
+/// Helper mixin for generating font-face declarations. Primarily used
+/// internally off the fonts variable to load fonts for the theme
+///
+/// @example scss
+///    @include @include font-loader(
+///         map-get($font, name),
+///         map-get($font, asset),
+///         map-get($font, weight),
+///         map-get($font, style),
+///         map-get($font, ext)
+///     );
+///
+/// @access private
+
+@mixin font-loader($name, $path, $weight, $style, $exts: eot woff2 woff ttf svg, $display: swap) {
+    $src: null;
+
+    $extmods: (
+        eot: '?',
+        svg: '#' + str-replace($name, ' ', '_')
+    );
+
+    $formats: (
+        otf: 'opentype',
+        ttf: 'truetype'
+    );
+
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url('../' + $path + '.' + $extmod) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-display: $display;
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}

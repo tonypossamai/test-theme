@@ -1,0 +1,24 @@
+.wp-block-button {
+    &__link {
+        @include granola-button;
+    }
+
+    &.aligncenter {
+        margin-top: space('paragraph');
+        margin-bottom: space('paragraph');
+    }
+
+    &.alignleft,
+    &.alignright {
+        width: auto;
+        margin-top: 0.4em;
+    }
+
+    &.alignright {
+        margin-right: 0;
+    }
+
+    &.alignleft {
+        margin-left: 0;
+    }
+}

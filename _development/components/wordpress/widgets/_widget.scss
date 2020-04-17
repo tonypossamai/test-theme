@@ -1,0 +1,13 @@
+.widget {
+    @include layout-margin-bottom;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &-title {
+        @include heading-5;
+
+        margin-top: 0;
+    }
+}

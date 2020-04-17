@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/// Helper function for making an element inside the main page container full
+/// width of the screen. Achieves this utilising the knowledge of the container
+/// width, along with an offset to return a value to extend the container by.
+///
+/// @param {string} $container - The width of the container the content is in
+///
+/// @param {string} $offset - The pixel offset calculation for the width
+///
+/// @param {string} $rounding-fix - Whether or not to apply a fix for rounding errors
+///
+/// @example scss
+///     left: full-width-container(1200px);
+///
+/// @access public
+
+@function full-width(
+    $content,
+    $rounding-fix: true,
+    $padding: 0
+) {
+    $round: 0;
+
+    @if $rounding-fix == true {
+        $round: 1px;
+    }
+
+    @return calc(-50vw + #{$content / 2} - #{$round} + #{$padding});
+}

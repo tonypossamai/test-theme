@@ -1,0 +1,16 @@
+.wp-block-embed {
+    &__wrapper {
+        > * {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    iframe {
+        @include box-shadow;
+        @include rounded-corners;
+
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

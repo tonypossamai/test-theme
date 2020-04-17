@@ -1,0 +1,39 @@
+.wp-block-gallery {
+    $gutter: 16px;
+    $gutenberg-breakpoint: 600px;
+
+    @include layout-margin;
+
+    .blocks-gallery-item.blocks-gallery-item {
+        margin-top: $gutter;
+        margin-bottom: 0;
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            margin-top: 0;
+        }
+    }
+
+    // Remove the top margin from the first x items
+    &.columns-1 > .blocks-gallery-item:nth-child(1),
+    &.columns-2 > .blocks-gallery-item:nth-child(-n + 2),
+    &.columns-3 > .blocks-gallery-item:nth-child(-n + 3),
+    &.columns-4 > .blocks-gallery-item:nth-child(-n + 4),
+    &.columns-5 > .blocks-gallery-item:nth-child(-n + 5) {
+        @include mq($gutenberg-breakpoint) {
+            margin-top: 0;
+        }
+    }
+
+    // Addresses a height issue when using code that modifies the output from
+    // WordPress to contain extra markup. Used in webp implementations mostly.
+    picture {
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        @include box-shadow;
+        @include rounded-corners;
+    }
+}

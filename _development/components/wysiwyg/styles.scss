@@ -1,0 +1,28 @@
+.wysiwyg {
+    @include layout-margin;
+    @include no-first-last-margin;
+
+    overflow: hidden;
+
+
+    &__heading {
+        @include make-container;
+        @include heading-1;
+
+        max-width: width('normal');
+    }
+
+    &__content {
+        @include no-first-last-margin;
+        @include layout-margin;
+        @include gutenberg;
+
+        // &--skinny {
+        //     @include gutenberg(
+        //         $width: width('skinny'),
+        //         $wide: width('normal'),
+        //         $gutter: space('gutter')
+        //     );
+        // }
+    }
+}

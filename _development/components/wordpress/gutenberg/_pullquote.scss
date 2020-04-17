@@ -1,0 +1,18 @@
+.wp-block-pullquote {
+    @include no-first-last-margin;
+    @include layout-margin;
+
+    max-width: 600px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    blockquote {
+        @include blockquote;
+    }
+
+    &.alignleft,
+    &.alignright {
+        // Quote have the layout margin applied. Remove it when floated
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,42 @@
+@include system-fonts;
+
+@if variable-exists(fonts) {
+    // Because scss starts array at 1...
+    $count: 1;
+    // Get the length of the array
+    $length: length($fonts);
+
+    // Some scss parsers are special and flatten scss lists when there is only
+    // one nested list.
+
+    // Check if fonts is a scss map (1 font)
+    @if is-map($fonts) == true {
+        @include font-loader(
+            map-get($fonts, name),
+            map-get($fonts, asset),
+            map-get($fonts, weight),
+            map-get($fonts, style),
+            map-get($fonts, ext)
+        );
+    }
+
+    // Check if fonts is a list (multiple fonts)
+    @if is-list($fonts) == true {
+        // Loop over each of the indexes
+        @while $count <= $length {
+            // Store a local reference to the map
+            $font: nth($fonts, $count);
+            // Update the count
+            $count: $count + 1;
+
+            // Import the font
+            @include font-loader(
+                map-get($font, name),
+                map-get($font, asset),
+                map-get($font, weight),
+                map-get($font, style),
+                map-get($font, ext)
+            );
+        }
+    }
+}

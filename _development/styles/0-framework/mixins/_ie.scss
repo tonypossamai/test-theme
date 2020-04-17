@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/// Helper function for generting styles that are only applied to ie9. Requires
+/// ie9 class to exist in the dom as a parent
+///
+/// @param {string} $size - The heading to generate styling for
+///
+/// @example scss
+///    .test {
+///        @include ie9 {
+///            color: red;
+///        }
+///    }
+///
+/// @example scss
+///    @include ie9 {
+///        .test {
+///            color: red;
+///        }
+///    }
+///
+/// @access public
+
+@mixin ie9 {
+    .ie9 {
+        @content;
+    }
+}
+
+/// Helper function for generting styles that are only applied to ie10. Requires
+/// ie10 class to exist in the dom as a parent
+///
+/// @param {string} $size - The heading to generate styling for
+///
+/// @example scss
+///    .test {
+///        @include ie10 {
+///            color: red;
+///        }
+///    }
+///
+/// @example scss
+///    @include ie10 {
+///        .test {
+///            color: red;
+///        }
+///    }
+///
+/// @access public
+
+@mixin ie10 {
+    .ie10 {
+        @content;
+    }
+}
+
+/// Helper function for generting styles that are only applied to ie10 up.
+///
+/// @param {string} $size - The heading to generate styling for
+///
+/// @example scss
+///    .test {
+///        @include ie10-up {
+///            color: red;
+///        }
+///    }
+///
+/// @example scss
+///    @include ie10-up {
+///        .test {
+///            color: red;
+///        }
+///    }
+///
+/// @access public
+
+@mixin ie10-up {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+/// Helper function for generting styles that are only applied to ie11. Requires
+/// ie11 class to exist in the dom as a parent
+///
+/// @param {string} $size - The heading to generate styling for
+///
+/// @example scss
+///    .test {
+///        @include ie11 {
+///            color: red;
+///        }
+///    }
+///
+/// @example scss
+///    @include ie11 {
+///        .test {
+///            color: red;
+///        }
+///    }
+///
+/// @access public
+
+@mixin ie11 {
+    .ie11 & {
+        @content;
+    }
+}

@@ -1,0 +1,24 @@
+@mixin cross($color: currentColor) {
+    position: relative;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 1px;
+        background-color: $color;
+        content: '';
+        transition: transition(transform);
+    }
+
+    &::before {
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+}

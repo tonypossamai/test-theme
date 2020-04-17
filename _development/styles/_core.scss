@@ -1,0 +1,44 @@
+// --------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------
+// Welcome to Granola styles
+// The following code is broken up in to two main sections
+// - Code that doesn't output any CSS
+// - Code that outputs CSS
+// For reference, the code output begins with resets and box model setup
+// --------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------
+
+// ----------------------------------------------
+// Import the framework
+// ----------------------------------------------
+@import './0-framework/framework';
+
+// ----------------------------------------------
+// Variables
+// ----------------------------------------------
+@import './0-variables/widths';
+@import './0-variables/colors';
+@import './0-variables/fonts';
+@import './0-variables/space';
+@import './0-variables/type-settings';
+@import './0-variables/general';
+@import './0-variables/sass-mq';
+
+// ----------------------------------------------
+// 3rd party mixins
+// These should output nothing
+// ----------------------------------------------
+@import 'sass-mq/mq';
+@import 'rfs/scss';
+
+// ----------------------------------------------
+// Mixins - Components
+// ----------------------------------------------
+@import './0-components/burger';
+@import './0-components/button';
+@import './0-components/blockquote';
+@import './0-components/cross';
+@import './0-components/input';
+@import './0-components/checkbox-radio';
+@import './0-components/select';
+@import './0-components/link';

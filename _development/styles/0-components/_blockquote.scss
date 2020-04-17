@@ -1,0 +1,9 @@
+@mixin blockquote {
+    @include no-first-last-margin;
+    @include layout-margin(0.5);
+
+    padding: space('paragraph');
+    border-left: 0.25em solid currentColor;
+    margin-right: 0;
+    margin-left: 0;
+}

@@ -1,0 +1,26 @@
+@mixin full-width(
+    $content: width('normal') - space('padding'),
+    $padding: 0,
+    $clamp: false,
+    $rounding-fix: true,
+) {
+    overflow: hidden;
+    margin-right: -(space('gutter'));
+    margin-left: -(space('gutter'));
+
+    @include mq($content) {
+        margin-right: full-width($content: $content, $rounding-fix: $rounding-fix, $padding: $padding);
+        margin-left: full-width($content: $content, $rounding-fix: $rounding-fix, $padding: $padding);
+    }
+
+    @if $clamp != false {
+        $extra: ($clamp - ($content - $padding)) / 2;
+
+        overflow: visible;
+
+        @include mq($clamp) {
+            margin-right: -($extra);
+            margin-left: -($extra);
+        }
+    }
+}

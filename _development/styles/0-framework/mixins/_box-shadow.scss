@@ -1,0 +1,11 @@
+@mixin box-shadow {
+    @if
+        strip-unit($box-shadow-horizontal) != 0
+        or strip-unit($box-shadow-vertical) != 0
+        or strip-unit($box-shadow-blur) != 0
+        or strip-unit($box-shadow-spread) != 0 {
+
+        filter: drop-shadow($box-shadow-horizontal $box-shadow-vertical $box-shadow-blur $box-shadow-color);
+        // box-shadow: $box-shadow-horizontal $box-shadow-vertical $box-shadow-blur $box-shadow-spread $box-shadow-color;
+    }
+}

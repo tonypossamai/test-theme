@@ -1,0 +1,14 @@
+.wp-block-image {
+    figure {
+        margin-top: 0.6em;
+    }
+
+    img {
+        @include box-shadow;
+        @include rounded-corners;
+    }
+
+    &.alignfull {
+        @include no-first-last-margin;
+    }
+}

@@ -1,0 +1,16 @@
+// ---------------------------------------------------
+// This is just a nice to have that makes svgs
+// - Responsive
+// - Match the current color of the text
+// ---------------------------------------------------
+svg {
+    width: 100%;
+    max-height: 100%;
+}
+
+svg:not(.svg--keepcolors) {
+    &,
+    path {
+        fill: currentColor;
+    }
+}

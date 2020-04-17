@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/// Make text flow over multiple columns within its defined width
+///
+/// @param {number} $columns [2] - The amount of columns to generate
+///
+/// @param {number} $gap [space('gutter')] - The distance between the columns
+///
+/// @example scss
+///    @include columns;
+///
+/// @example scss
+///    @include columns(3);
+///
+/// @example scss
+///    @include columns(2, 20px);
+///
+/// @access public
+
+@mixin columns ($columns: 2, $gap: space('gutter')) {
+    column-count: $columns;
+    column-gap: $gap;
+}

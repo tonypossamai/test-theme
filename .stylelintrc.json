@@ -1,0 +1,13 @@
+{
+    "extends": [
+        "stylelint-config-sass-guidelines",
+        "stylelint-config-idiomatic-order"
+    ],
+    "rules": {
+        "order/properties-alphabetical-order": null,
+        "max-nesting-depth": null,
+        "selector-class-pattern": null,
+        "scss/at-import-partial-extension-blacklist": null,
+        "indentation": 4
+    }
+}

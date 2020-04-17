@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/// Reset the default styles applied to buttons
+///
+/// @example scss
+///    @include button-reset;
+///
+/// @access public
+
+@mixin button-reset {
+    // Remove default styles
+    padding: 0;
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+    cursor: pointer;
+
+    // Applied in normalize.css
+    // font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+}

@@ -1,0 +1,35 @@
+@mixin gutenberg (
+    $width: width('normal'),
+    $wide: width('wide'),
+    $gutter: space('gutter')
+) {
+    $content: $width - ($gutter * 2);
+
+    @include make-container($gutter);
+
+    max-width: $width;
+
+    .alignwide,
+    .alignfull {
+        // Gutenberg core likes to apply a 100% width to some elements. When
+        // using the negative margin hack, we can't have a width of 100% as it
+        // restricts the block from growing.
+        width: auto;
+        max-width: 100vw;
+    }
+
+    .alignwide {
+        @include full-width(
+            $clamp: $wide,
+            $content: $content,
+        );
+    }
+
+    .alignfull {
+        @include full-width(
+            $content: $content,
+        );
+
+        overflow: hidden;
+    }
+}

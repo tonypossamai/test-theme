@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/// This is from icomoon. Seems to be nice though for icons. Two approaches.
+/// Apply this class to an svg, or adds these properties to an svg. your choice
+///
+/// @example scss
+///    @include responsive-svg;
+///
+/// @access public
+
+@mixin responsive-svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 0;
+}

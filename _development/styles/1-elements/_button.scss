@@ -1,0 +1,25 @@
+button,
+[type=submit],
+[type=reset],
+[type=button] {
+    @include button-reset;
+}
+
+.button {
+    @include granola-button;
+}
+
+// ----------------------------------------------
+// Button modifiers
+// ----------------------------------------------
+// Marked for deprecation, note to dev team if you
+// end up using this
+// ----------------------------------------------
+// @each $name, $properties in $color-map {
+//     .button--#{$name} {
+//         @include granola-button-color(
+//             color-map($name, foreground),
+//             color-map($name, background)
+//         );
+//     }
+// }

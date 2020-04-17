@@ -1,0 +1,23 @@
+@function layout($breakpoint: xsmall, $multiplier: 1) {
+    $return: space('layout');
+
+    $breakpoint-multiplier: 0.4;
+
+    @if $breakpoint == 'small' {
+        $breakpoint-multiplier: 0.4;
+    }
+
+    @if $breakpoint == 'medium' {
+        $breakpoint-multiplier: 0.6;
+    }
+
+    @if $breakpoint == 'large' {
+        $breakpoint-multiplier: 0.8;
+    }
+
+    @if $breakpoint == 'xlarge' {
+        $breakpoint-multiplier: 1;
+    }
+
+    @return $return * $breakpoint-multiplier * $multiplier;
+}

@@ -1,0 +1,10 @@
+.lazyload,
+.lazyloading {
+    filter: blur(10px);
+    opacity: 0.5;
+}
+
+.lazyloaded {
+    filter: blur(0);
+    transition: transition(filter, opacity);
+}

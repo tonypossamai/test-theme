@@ -1,0 +1,17 @@
+// ---------------------------------------------------
+// Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
+// ---------------------------------------------------
+.ie9 [src*='.svg'] {
+    width: 100%;
+}
+
+// ---------------------------------------------------
+// IE10 and up
+// would be nice to make this a mixin to wrap things when we need to target the browser instead of hacky javascript
+// ---------------------------------------------------
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    [src*='.svg'] {
+        width: 100%;
+        max-height: 100%;
+    }
+}

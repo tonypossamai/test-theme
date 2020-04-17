@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/// Make a list display its elements all on one line. Accepts a parameter
+/// representing a space to place inbetween each element
+///
+/// @param {number} $gap [false] - The gap between each item in the list
+///
+/// @example scss
+///    @include list-inline;
+///
+/// @example scss
+///    @include list-inline(space('paragraph'));
+///
+/// @access public
+
+@mixin list-inline($gap: false) {
+    display: flex;
+    flex-wrap: wrap;
+
+    @if $gap != false {
+        > * {
+            margin-right: $gap;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

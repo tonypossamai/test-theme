@@ -1,0 +1,8 @@
+.wp-block-media-text {
+    &__media {
+        img {
+            @include box-shadow;
+            @include rounded-corners;
+        }
+    }
+}

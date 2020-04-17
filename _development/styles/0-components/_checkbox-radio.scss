@@ -1,0 +1,100 @@
+$checkbox-checked-color: color('black');
+$checkbox-border-color: color('black');
+$checkbox-border-color-disabled: rgba(color('black'), 0.9);
+$checkbox-checked-color-disabled: rgba(color('black'), 0.9);
+$checkmark-color: color('white');
+$checkbox-margin: 1em 0;
+$checkbox-size: 1.25em;
+$checkbox-padding: 0.25em;
+$checkbox-border-width: 2px;
+$checkbox-border-radius: 0.125em;
+$checkmark-width: 0.125em;
+$checkbox-label-padding: $checkbox-size + 0.5em;
+
+@mixin checkbox-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: $checkbox-label-padding;
+    clear: both;
+    cursor: pointer;
+    line-height: $checkbox-size;
+    vertical-align: top;
+
+    &::before,
+    &::after {
+        position: absolute;
+        left: 0;
+        content: '';
+    }
+
+    &::before {
+        width: $checkbox-size;
+        height: $checkbox-size;
+        border: $checkbox-border-width solid $checkbox-border-color;
+        background: transparent;
+        border-radius: $checkbox-border-radius;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+}
+
+@mixin checkbox-input {
+    position: absolute;
+    display: block;
+    width: $checkbox-size;
+    margin: 0;
+    float: left;
+    font-size: inherit;
+    opacity: 0;
+    outline: 0;
+
+    &:checked {
+        + label::before {
+            border: 0;
+            background: $checkbox-checked-color;
+        }
+
+        + label::after {
+            $checkmark-size: $checkbox-size - 2 * $checkbox-padding;
+
+            width: $checkmark-size;
+            height: $checkmark-size / 2;
+            border: $checkmark-width solid $checkmark-color;
+            border-top-style: none;
+            border-right-style: none;
+            transform: translate($checkbox-padding, -1px) rotate(-45deg);
+        }
+    }
+
+    &:disabled {
+        + label::before {
+            border-color: $checkbox-border-color-disabled;
+        }
+
+        &:checked {
+            + label::before {
+                background: $checkbox-checked-color-disabled;
+            }
+        }
+    }
+
+    &:focus + label::before,
+    + label:focus::before {
+        outline: $input-focus-color auto 5px;
+    }
+}
+
+@mixin checkbox-label--highlight {
+    @include input;
+
+    display: flex;
+    align-items: center;
+    padding-left: $checkbox-size * 2;
+    font-weight: normal;
+
+    &::after,
+    &::before {
+        left: $checkbox-size / 2;
+    }
+}

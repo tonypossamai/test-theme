@@ -1,0 +1,47 @@
+.cards {
+    @include layout-margin;
+    @include make-container;
+
+    max-width: width('normal');
+
+    &__row {
+        @include make-row;
+
+        justify-content: center;
+    }
+
+    &__col {
+        @include make-column;
+
+        margin-top: space('gutter') * 2;
+
+        @include mq('medium') {
+            $columns: 2;
+
+            width: calc(100% / #{$columns});
+
+            &:nth-child(-n + #{$columns}) {
+                margin-top: 0;
+            }
+        }
+
+        @include mq('xlarge') {
+            $columns: 3;
+
+            width: calc(100% / #{$columns});
+
+            &:nth-child(-n + #{$columns}) {
+                margin-top: 0;
+            }
+        }
+
+        &:nth-child(1) {
+            margin-top: 0;
+        }
+    }
+
+    .wysiwyg & {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

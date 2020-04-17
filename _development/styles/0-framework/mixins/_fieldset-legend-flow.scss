@@ -1,0 +1,15 @@
+// [1] Make the legend sit in normal flow
+// [2] Give the legend a proper bottom margin as
+//     the following element will but up even if it
+//     has a margin top
+
+@mixin fieldset-legend-flow {
+    > legend {
+        margin-bottom: space('paragraph'); // [2]
+        float: left; // [1]
+
+        + * {
+            clear: both;
+        }
+    }
+}

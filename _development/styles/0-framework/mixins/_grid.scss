@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+/// Create a container for the site content to reside in. This will center the
+/// content on the page and create padding on the left and right hand side so
+/// content does not sit against the edge of the screen.
+///
+/// @param {number} $gutter [space('container-padding')] - The space to create at the edge
+/// of the screen
+///
+/// @example scss
+///    @include make-container;
+///
+/// @example scss
+///    @include make-container(20px);
+///
+/// @access public
+
+@mixin make-responsive-container($gutter: space('container-padding'), $gutter--tablet: $gutter, $gutter--desktop: $gutter--tablet) {
+    @include make-container($gutter);
+
+    @include mq(medium) {
+        @include make-padding($gutter--tablet * 2);
+    }
+
+    @include mq(large) {
+        @include make-padding($gutter--desktop * 2);
+    }
+}
+
+@mixin make-container($gutter: space('container-padding')) {
+    @include make-padding($gutter * 2);
+
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/// Create a row which will contain columns. Rows create space for a gutter by
+/// applying negative margins to the right and left, half the width of the
+/// gutter
+///
+/// @param {number} $gutter [space('container-padding')] - The space, equal to the space
+/// applied to child columns, that will used for negative margins
+///
+/// @example scss
+///    @include make-row;
+///
+/// @example scss
+///    @include make-row(20px);
+///
+/// @access public
+@mixin make-row($gutter: space('container-padding')) {
+    @include make-margin($gutter);
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin make-responsive-row($gutter: space('gutter'), $gutter--tablet: $gutter, $gutter--desktop: $gutter--tablet) {
+    @include make-row($gutter);
+
+    @include mq(medium) {
+        @include make-margin($gutter--tablet);
+    }
+
+    @include mq(large) {
+        @include make-margin($gutter--desktop);
+    }
+}
+
+/// Create a column which sits inside a container. A column helps create the
+/// gutter by applying padding to the left and right, half the width of the
+/// gutter, in effect, creating space between sibling columns
+///
+/// @param {number} $gutter [space('gutter')] - The space, equal to the space
+/// applied to the parent row, that will be used for padding
+///
+/// @example scss
+///    @include make-column;
+///
+/// @example scss
+///    @include make-column(20px);
+///
+/// @access public
+
+@mixin make-responsive-column($gutter: space('gutter'), $gutter--tablet: space('gutter--tablet'), $gutter--desktop: space('gutter--desktop')) {
+    @include make-column($gutter);
+
+    @include mq(medium) {
+        @include make-padding($gutter--tablet);
+    }
+
+    @include mq(large) {
+        @include make-padding($gutter--desktop);
+    }
+}
+
+@mixin make-column($gutter: space('gutter')) {
+    @include make-padding($gutter);
+}
+
+/// Helper function for including the negative margins we need to create a
+/// gutter
+///
+/// @param {number} $gutter [space('gutter')] - The space, equal to the space
+/// applied to child columns, that will used for negative margins
+///
+/// @example scss
+///    @include make-margin;
+///
+/// @example scss
+///    @include make-margin(20px);
+///
+/// @access private
+
+@mixin make-margin($gutter: space('gutter')) {
+    margin-right: -$gutter / 2;
+    margin-left: -$gutter / 2;
+}
+
+/// Helper function for including the padding we need to create a gutter
+///
+/// @param {number} $gutter [space('gutter')] - The space, equal to the space
+/// applied to the parent row, that will be used for padding
+///
+/// @example scss
+///    @include make-padding;
+///
+/// @example scss
+///    @include make-padding(20px);
+///
+/// @access private
+
+@mixin make-padding($gutter: space('gutter')) {
+    padding-right: $gutter / 2;
+    padding-left: $gutter / 2;
+}

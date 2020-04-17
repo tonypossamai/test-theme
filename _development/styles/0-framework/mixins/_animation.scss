@@ -1,0 +1,25 @@
+@mixin entrance-animation($name: fade-in, $duration: $transition-time, $delay: 0ms, $easing: $transition-ease, $direction: normal) {
+    animation-delay: $delay;
+    animation-direction: $direction;
+    animation-duration: $duration;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: $name;
+    animation-timing-function: $transition-ease;
+}
+
+@mixin delay-items($time, $items: 1, $reverse: false) {
+    $step: $time / $items;
+    @for $i from 1 through $items {
+        @if $reverse == true {
+            $time: $time - (($i - 1) * $step);
+        } @else {
+            $time: $i * $step;
+        }
+
+        &:nth-child(#{$i}) {
+            transition-delay: #{$time}ms;
+        }
+    }
+}
+

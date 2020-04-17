@@ -1,0 +1,37 @@
+@mixin header {
+    position: relative;
+    z-index: 2;
+    padding-top: space('gutter');
+    padding-bottom: space('gutter');
+
+    &__inner {
+        @include make-container;
+
+        display: flex;
+        max-width: width('normal');
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: block;
+        max-width: 140px;
+    }
+
+    &__menu {
+        @include list-reset-hard;
+
+        ul {
+            @include list-reset-hard;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+
+            @include interact {
+                text-decoration: underline;
+            }
+        }
+    }
+}

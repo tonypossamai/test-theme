@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------
+// The double selector hack is applied in this file due to gutenberg styling
+// being a little overzealous with its selectors. The options we have are
+// therefore redo the styling for all blocks, or apply a little selector magic
+// to address the problem
+// -----------------------------------------------------------------------------
+
+.aligncenter {
+    // Some of the items that are centered are not block level. Lets fix that
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.alignright.alignright,
+.alignleft.alignleft {
+    // This line controls if it should grow to the max it can be or be only
+    // what is needed for the content
+    width: 100%;
+    max-width: 60%;
+    margin-bottom: space('gutter');
+}
+
+.alignright.alignright {
+    margin-left: space('gutter');
+    float: right;
+
+    @include mq(1600px) {
+        margin-right: -25%;
+    }
+}
+
+.alignleft.alignleft {
+    margin-right: space('gutter');
+    float: left;
+
+    @include mq(1600px) {
+        margin-left: -25%;
+    }
+}
+
+.alignwide,
+.alignfull {
+    @include layout-margin;
+}

@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+
+/// Helper function to return a unit value from a unit string
+///
+/// @param {string} $number - The unit and value to return the value of
+///
+/// @example scss
+///     $number: strip-unit(50px);
+///
+/// @access public
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}

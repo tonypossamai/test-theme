@@ -1,0 +1,86 @@
+// ---------------------------------------------------
+// Type Variables
+// ---------------------------------------------------
+$base-font-size: 20px;
+$large-font-size: 22px;
+$small-font-size: 14px;
+
+$base-font-weight: 400;
+$base-bold-font-weight: 700;
+$base-line-height: 1.5;
+$base-font-family: 'system-ui';
+
+$heading-color: inherit;
+$heading-font-family: serif;
+$heading-font-weight: 700;
+$heading-line-height: 1.2;
+
+
+// ---------------------------------------------------
+// Type Style Mixins
+// ---------------------------------------------------
+
+@mixin body-text {
+    @include rfs($base-font-size);
+
+    line-height: $base-line-height;
+}
+
+@mixin small-text {
+    @include rfs($small-font-size);
+
+    line-height: 1.2;
+}
+
+@mixin heading-attributes {
+    margin-top: 1.75em;
+    margin-bottom: 0.5em;
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+
+    // Make a tags that are children of headings inherit styling
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+@mixin hero-heading {
+    @include heading-attributes;
+    @include rfs(60px);
+
+    line-height: 1.2;
+}
+
+@mixin heading-1 {
+    @include heading-attributes;
+    @include rfs(40px);
+
+    line-height: 1.2;
+}
+
+@mixin heading-2 {
+    @include heading-attributes;
+    @include rfs(36px);
+}
+
+@mixin heading-3 {
+    @include heading-attributes;
+    @include rfs(32px);
+}
+
+@mixin heading-4 {
+    @include heading-attributes;
+    @include rfs(20px);
+}
+
+@mixin heading-5 {
+    @include heading-attributes;
+    @include rfs(18px);
+}
+
+@mixin heading-6 {
+    @include heading-attributes;
+    @include rfs(18px);
+}

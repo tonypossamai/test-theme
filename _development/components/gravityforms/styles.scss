@@ -1,0 +1,386 @@
+// The following styling is meant to replace gravity forms default styling so
+// that we can turn off the Gravity Forms stylesheets. So on activation of GF,
+// set 'Output CSS' to 'No'.
+
+// ------------------------------------------------
+// Fields wrapper
+// ------------------------------------------------
+.gform_fields {
+    @include list-reset;
+    @include make-row;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+        @include make-column;
+    }
+}
+
+// ------------------------------------------------
+// Field wrapper
+// ------------------------------------------------
+.gfield {
+    width: 100%;
+
+    &.gfield_visibility_visible {
+        margin-bottom: space('paragraph');
+    }
+
+    .gfield_label {
+        margin-bottom: space('paragraph') / 2;
+    }
+}
+
+.ginput_container {
+    &_address,
+    &_name {
+        margin-bottom: 0;
+    }
+}
+
+.gform_wrapper {
+    margin-top: space('paragraph');
+    margin-bottom: space('paragraph');
+
+    li {
+        position: relative;
+    }
+
+    label {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .gfield_checkbox,
+    .gfield_radio {
+        @include list-reset;
+
+        li {
+            position: relative;
+            margin-bottom: space('paragraph') / 2;
+        }
+
+        input {
+            @include checkbox-input;
+        }
+
+        label {
+            @include checkbox-label;
+
+            margin-bottom: 0;
+        }
+    }
+
+    .gf_invisible,
+    .gfield_visibility_hidden {
+        position: absolute;
+        left: -9999px;
+        visibility: hidden;
+    }
+}
+
+.ginput_complex {
+    @include make-row;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        @include make-column;
+        flex-grow: 1;
+        margin-bottom: space('paragraph') / 2;
+    }
+}
+
+.ginput_full {
+    width: 100%;
+}
+
+.ginput_left,
+.ginput_right {
+    @include mq(medium) {
+        width: 50%;
+    }
+}
+
+.gfield_description {
+    margin-top: space('paragraph') / 4;
+
+    .field_description_above & {
+        margin-top: 0;
+        margin-bottom: space('paragraph') / 4;
+    }
+}
+
+.validation_error,
+.validation_message {
+    margin-bottom: $input-gap;
+    color: $form-error-message-color;
+}
+
+.validation_message {
+    margin-bottom: 0;
+}
+
+.gform_confirmation_message {
+    @include heading-4;
+
+    text-align: center;
+}
+
+.gfield_error {
+    input,
+    textarea {
+        @include input--error;
+    }
+}
+
+.gf_progressbar {
+    background: color('black');
+    border-radius: $base-border-radius;
+    text-align: center;
+
+    &_wrapper {
+        margin-bottom: space('paragraph');
+    }
+}
+
+.percentbar_0 {
+    // So we need to override the default width of the percentbar when it is at 0%
+    // This is so we can center the text in the whole percentbar
+    width: 100% !important;
+}
+
+.clear-multi {
+    @include make-row;
+
+    > * {
+        @include make-column;
+    }
+
+    .ginput_container {
+        flex-grow: 1;
+    }
+}
+
+.address_country {
+    @if $input-custom-select == true {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            top: $input-padding-vertical * 1.5;
+            right: calc(#{space('gutter') / 2} + 1em);
+            display: block;
+            width: 0.5em;
+            height: 0.5em;
+            border-top: $input-border-thickness solid currentColor;
+            border-left: $input-border-thickness solid currentColor;
+            content: '';
+            pointer-events: none;
+            transform: translateY(-50%) rotate(-135deg);
+        }
+    }
+}
+
+.gf_clear {
+    display: none;
+}
+
+.ginput_list {
+    thead,
+    tr,
+    th,
+    td {
+        border: 0;
+    }
+
+    tr {
+        @include make-row;
+
+        display: flex;
+        align-items: center;
+
+        > * {
+            @include make-column;
+        }
+    }
+
+    th,
+    td {
+        flex-grow: 1;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: 0;
+
+        &:last-child {
+            width: $gf-list-icon-size*5;
+            flex-grow: 0;
+        }
+    }
+}
+
+.gfield_list_group {
+    margin-bottom: space('gutter') / 2;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.gfield_list_icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add_list_item,
+.delete_list_item {
+    // For these styles to be applied we rely on a gravity forms
+    // hack/filter which removes the style tags from the output
+    // HAPPY DAYS
+
+    width: $gf-list-icon-size;
+    transition: transition(transform);
+
+    @include interact {
+        transform: rotate(180deg);
+    }
+}
+
+.ui-datepicker {
+    background: color('white');
+    border-radius: $base-border-radius;
+
+    &-header {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: space('paragraph') / 2;
+    }
+
+    &-prev,
+    &-next {
+        width: 50%;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    &-title {
+        display: flex;
+        width: 100%;
+    }
+
+    &-calendar {
+        th,
+        td {
+            padding: 0;
+
+            span,
+            a {
+                display: block;
+                padding: 0.25rem 0.5rem;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// .ui-widget {}
+
+// .ui-widget-content {}
+
+// .ui-helper-clearfix {}
+
+// .ui-corner-all {}
+
+// By Default sub labels are below the inputs
+// This styling handles when the labels are below
+.field_sublabel_above {
+    .address_country {
+        &::after {
+            @if $input-custom-select == true {
+                top: auto;
+                bottom: $input-padding-vertical * 1.5;
+            }
+        }
+    }
+}
+
+.field_sublabel_below {
+    .ginput_container:not(.ginput_container_checkbox):not(.ginput_container_radio) {
+        label {
+            margin-top: $label-spacing;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.gfield-honeypot {
+    display: none !important;
+}
+
+.gfield_required {
+    &::before {
+        content: ' ';
+    }
+}
+
+.hidden_label {
+    .gfield_label {
+        @include screen-reader;
+    }
+}
+
+.gfield_label_before_complex {
+    .gfield_required {
+        display: none;
+    }
+}
+
+.gfield_contains_required {
+    .ginput_complex {
+        label::after {
+            content: ' *';
+        }
+    }
+}
+
+.gform_confirmation_wrapper {
+    margin-top: space('paragraph');
+}
+
+.gform_ajax_spinner {
+    width: 25px;
+    height: 25px;
+    border: 4px solid currentColor;
+    border-left: 4px solid color('white');
+    margin-left: 20px;
+    animation: spinner 0.7s infinite linear;
+    border-radius: 50%;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.gform_drop_area {
+    @include input;
+
+    padding: space('gutter');
+    border: 2px dashed color('black');
+    text-align: center;
+
+    .gform_drop_instructions {
+        margin-right: space('paragraph') / 2;
+    }
+}

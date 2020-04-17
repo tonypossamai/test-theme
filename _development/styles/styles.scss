@@ -1,0 +1,65 @@
+// --------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------
+// Welcome to Granola styles
+// The following code is broken up in to two main sections
+// - Code that doesn't output any CSS
+// - Code that outputs CSS
+// For reference, the code output begins with resets and box model setup
+// --------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------
+
+// ----------------------------------------------
+// Import the framework
+// ----------------------------------------------
+@import './core';
+
+// ----------------------------------------------
+// Reset the things
+// ----------------------------------------------
+@import 'normalize.css/normalize.css';
+
+// ----------------------------------------------
+// Elements
+// ----------------------------------------------
+@import './1-elements/animations';
+@import './1-elements/box-sizing';
+@import './1-elements/fonts';
+@import './1-elements/html';
+@import './1-elements/body';
+@import './1-elements/type';
+@import './1-elements/headings';
+@import './1-elements/table';
+@import './1-elements/figure';
+@import './1-elements/blockquote';
+@import './1-elements/selection';
+@import './1-elements/forms';
+@import './1-elements/img';
+@import './1-elements/a';
+@import './1-elements/iframe';
+@import './1-elements/hr';
+@import './1-elements/svg';
+@import './1-elements/button';
+
+// ----------------------------------------------
+// Components
+// A reusable piece of styling that
+// can be used to put other things together
+// ----------------------------------------------
+@import './2-components/img-fit';
+@import './2-components/lazy-load';
+@import '../components/components';
+
+// ----------------------------------------------
+// Templates
+// ----------------------------------------------
+// @import './3-templates/xxxxx';
+
+// ----------------------------------------------
+// Trumps
+// ----------------------------------------------
+// @import './4-trumps/no-scroll';
+
+// ----------------------------------------------
+// Hacks
+// ----------------------------------------------
+// @import './5-hacks/ie';

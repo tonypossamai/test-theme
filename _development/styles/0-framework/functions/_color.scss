@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Helper function to retrieve a color defined in variables.
+/// Useful for removing random colors used in the code base
+///
+/// @param {string} $color - The name of the color as defined in the sass map
+///
+/// @example scss
+///    color: color('red');
+///
+/// @access public
+
+@function color($color) {
+    @if map-has-key($colors, $color) == false {
+        @error 'Color not defined: `#{$color}`';
+    }
+
+    @return map-get($colors, $color);
+}

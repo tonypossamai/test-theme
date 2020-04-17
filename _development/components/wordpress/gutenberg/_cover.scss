@@ -1,0 +1,12 @@
+.wp-block-cover,
+.wp-block-cover-image {
+    @include no-first-last-margin;
+    @include box-shadow;
+    @include rounded-corners;
+    @include layout-margin;
+
+    &.alignleft,
+    &.alignright {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,36 @@
+//--------------------------------------------------------------
+// Gallery
+//--------------------------------------------------------------
+.gallery {
+    @include make-row;
+
+    > * {
+        @include make-column;
+    }
+
+    &-columns {
+        @for $i from 1 through 9 {
+            &-#{$i} {
+                > * {
+                    flex-basis: calc(100% / #{$i});
+                }
+            }
+        }
+    }
+
+    &-icon {
+        @include object-fit;
+
+        &.landscape {
+            padding-top: ratio(6, 4);
+        }
+
+        &.portrait {
+            padding-top: ratio(4, 6);
+        }
+
+        img {
+            @include object-fit-asset;
+        }
+    }
+}

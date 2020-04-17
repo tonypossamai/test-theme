@@ -1,0 +1,32 @@
+// ----------------------------------------------
+// [1] Fix iOS inconsistencies
+// [2] normalize for some reason makes an opinionated call and sets this to something other than inherit...
+// ----------------------------------------------
+@mixin input {
+    @include no-focus-not-accessible;
+
+    display: block;
+    width: 100%;
+    padding: $input-padding;
+    border: $input-border-thickness solid $input-border-color;
+    background-color: $input-background;
+    border-radius: $input-radius;
+    box-shadow: none; // [1]
+    color: $input-color;
+    font-family: inherit; // [2]
+    line-height: inherit; // [2]
+    transition: transition(color, background-color, border-color, box-shadow, transform);
+
+    &:focus {
+        box-shadow: 0 0 0 2px $base-focus-color;
+    }
+
+    // &:-webkit-autofill {
+    //     // Webkit hack to change autofill background. Should be enabled carefully as autofill background is a useful user feedback mechanism.
+    //     box-shadow: 0 0 0 1000px $input-background inset;
+    // }
+}
+
+@mixin input--error {
+    border-color: $form-error-message-color;
+}

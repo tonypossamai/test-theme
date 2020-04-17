@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// Core wordpress requirements
+// -----------------------------------------------------------------------------
+@import './helpers/alignment';
+@import './helpers/screen-reader-text';
+
+// -----------------------------------------------------------------------------
+// Gutenberg
+// -----------------------------------------------------------------------------
+@import './gutenberg/color-palette-support';
+@import './gutenberg/audio';
+@import './gutenberg/button';
+@import './gutenberg/column';
+@import './gutenberg/cover';
+@import './gutenberg/embed';
+@import './gutenberg/gallery';
+@import './gutenberg/image';
+@import './gutenberg/media-text';
+@import './gutenberg/pullquote';
+@import './gutenberg/quote';
+@import './gutenberg/separator';
+
+// -----------------------------------------------------------------------------
+// Core wordpress components
+// -----------------------------------------------------------------------------
+// @import './components/comments';
+// @import './components/pag-nav';
+// @import './components/search-form';
+
+// -----------------------------------------------------------------------------
+// TinyMCE Stuff
+// -----------------------------------------------------------------------------
+// @import './tinymce/gallery';
+
+// -----------------------------------------------------------------------------
+// Widgets if you use these
+// -----------------------------------------------------------------------------
+// @import './widgets/widget';
+// @import './widgets/calendar';
+// @import './widgets/media-gallery';
+

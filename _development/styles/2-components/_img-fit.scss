@@ -1,0 +1,13 @@
+.img-fit {
+    @include object-fit;
+
+    overflow: hidden;
+
+    img {
+        @include object-fit-asset;
+    }
+
+    &--fallback {
+        @include object-fit-img-fallback;
+    }
+}

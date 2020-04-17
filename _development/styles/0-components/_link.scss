@@ -1,0 +1,25 @@
+@mixin underline-on-hover {
+    text-decoration: none;
+
+    @include interact {
+        text-decoration: underline;
+    }
+}
+
+@mixin remove-underline-on-hover {
+    text-decoration: underline;
+
+    @include interact {
+        text-decoration: none;
+    }
+}
+
+@mixin link {
+    @include remove-underline-on-hover;
+
+    color: $link-color-base;
+
+    @include interact {
+        color: $link-color-hover;
+    }
+}

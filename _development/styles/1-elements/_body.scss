@@ -1,0 +1,7 @@
+body {
+    @include body-text;
+
+    display: flex;
+    height: 100%;
+    flex-flow: column nowrap;
+}

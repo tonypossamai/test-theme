@@ -1,0 +1,33 @@
+.navigation {
+    @include layout-margin;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    > * {
+        margin-right: 1em;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    a,
+    .current {
+        @include granola-button;
+    }
+}
+
+.page-numbers {
+    &.current {
+        @include granola-button-color(
+            $text: color('white'),
+            $background: color('black'),
+            $border: color('black')
+        );
+    }
+}

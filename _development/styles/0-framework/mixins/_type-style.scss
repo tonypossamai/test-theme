@@ -1,0 +1,66 @@
+/// Generate responsive type styles from the type styles maps.
+/// @example scss - Hero heading
+///     @include type-style('hero-heading');
+
+
+@mixin type-style($style) {
+    $type-attributes: map-get($type-styles, $style);
+    $type-attributes-desktop: map-get($type-styles-desktop, $style);
+
+
+    @if not $type-attributes {
+        @error 'Type style not defined: `#{$style}`';
+    }
+
+
+    @if $type-attributes {
+        @each $attribute, $value in $type-attributes {
+            #{$attribute}: $value;
+        }
+    }
+
+    @if $type-attributes-desktop {
+        @include desktop {
+            @each $attribute, $value in $type-attributes-desktop {
+                #{$attribute}: $value;
+            }
+        }
+    }
+}
+
+/// Get specific attributes from a type-style rather than all the attributes.
+/// @example scss - Hero heading
+///     @include type-attributes('hero-heading', 'font-size', 'line-height');
+
+@mixin type-attributes($style, $attributes...) {
+    $type-attributes: map-get($type-styles, $style);
+    $type-attributes-desktop: map-get($type-styles-desktop, $style);
+
+
+    @if not $type-attributes {
+        @error 'Type style not defined: `#{$style}`';
+    }
+
+
+    @if $type-attributes {
+        @each $type-attribute in $attributes {
+            @each $attribute, $value in $type-attributes {
+                @if ($type-attribute == $attribute) {
+                    #{$attribute}: $value;
+                }
+            }
+        }
+    }
+
+    @if $type-attributes-desktop {
+        @include desktop {
+            @each $type-attribute in $attributes {
+                @each $attribute, $value in $type-attributes-desktop {
+                    @if ($type-attribute == $attribute) {
+                        #{$attribute}: $value;
+                    }
+                }
+            }
+        }
+    }
+}

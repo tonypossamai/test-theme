@@ -1,0 +1,56 @@
+@mixin header-interact-dropdown {
+    $menu-gap: 1em / 2;
+    $space: 0.75em;
+
+    &__menu {
+        display: flex;
+
+        > .menu-item {
+            margin-right: space('gutter');
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            padding: calc(#{$space} + #{$menu-gap}) $space $space;
+            color: color('white');
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.9) translateX(-50%) translateY(space('gutter'));
+            transition: transition(transform, opacity);
+            white-space: nowrap;
+
+            &::before {
+                @include rounded-corners;
+                @include box-shadow;
+
+                position: absolute;
+                z-index: -1;
+                top: $menu-gap;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: color('black');
+                content: '';
+            }
+        }
+
+        .menu-item-has-children {
+            position: relative;
+
+            @include interact {
+                > .sub-menu {
+                    opacity: 1;
+                    pointer-events: all;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+
+        }
+    }
+}

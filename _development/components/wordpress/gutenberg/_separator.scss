@@ -1,0 +1,16 @@
+.wp-block-separator {
+    @include layout-margin;
+
+    width: 50%;
+    clear: both;
+
+    &.is-style-wide {
+        width: 100%;
+    }
+
+    &.is-style-dots {
+        &::before {
+            padding-left: 0;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/// Remove default focus and active states applied by browsers. It is
+/// recommended that usage of this be avoided and default focus and active
+/// states are respected.
+///
+/// @example scss
+///    @include no-focus-not-accessible;
+///
+/// @access public
+
+@mixin no-focus-not-accessible {
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}

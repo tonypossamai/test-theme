@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/// Helper function to retrieve a percentage value to represent a ratio.
+/// Useful for sizing images and embeds to an exact ratio
+///
+/// @param {string} $ratio - The name of the ratio as defined in the sass map
+///
+/// @example scss
+///     padding-top: ratio('landscape');
+///
+/// @access public
+
+@function ratio($width, $height) {
+    @return percentage($height / $width);
+}

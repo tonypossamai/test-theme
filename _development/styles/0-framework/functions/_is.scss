@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/// Helper function to determine the type of a variable
+///
+/// @param {string} $type - The type you would like to check against
+///
+/// @param {string} $var - The variable you would like to check
+///
+/// @return {Bool}
+///
+/// @example scss
+///    @if is('list', $var) {
+///
+/// @access public
+
+@function is($type, $var) {
+    @return type-of($var) == $type;
+}
+
+/// Helper function to determine if a variable is a map
+///
+/// @param {string} $var - The variable you would like to check
+///
+/// @return {Bool}
+///
+/// @example scss
+///    @if is-map($var) {
+///
+/// @access public
+
+@function is-map($var) {
+    @return is('map', $var);
+}
+
+/// Helper function to determine if a variable is a list
+///
+/// @param {string} $var - The variable you would like to check
+///
+/// @return {Bool}
+///
+/// @example scss
+///    @if is-map($var) {
+///
+/// @access public
+
+@function is-list($var) {
+    @return is('list', $var);
+}

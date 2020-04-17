@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/// The image fit class makes a real image behave like a background image.
+/// This class alone does not make it work, a padding needs to be added as
+/// well so that it has a height to work with. There is a javascript fallback
+///
+/// @example scss
+///    .o-img-fit {
+///        @include object-fit;
+///    }
+///
+///    .post__image {
+///        padding-top: ratio(square);
+///    }
+///
+/// @example html
+///    <div class="post__image o-img-fit">
+///        <img src='...' alt='...'>
+///    </div>
+///
+/// @access public
+
+@mixin object-fit {
+    // We will be absolute positioning the child element of this so lets make
+    //lets make this relative
+    position: relative;
+
+    // We might not always be using a block level element so lets make it one
+    display: block;
+}
+
+@mixin object-fit-asset {
+    // Making the image fill the available space
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    // Object fit declarations
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+// When object fit isn't supported, which should
+// be determined through modernizr,a class will
+// be added to the body so that the following
+// class becomes active
+@mixin object-fit-img-fallback {
+    background-position: center;
+    background-size: cover;
+
+    img {
+        opacity: 0;
+    }
+}

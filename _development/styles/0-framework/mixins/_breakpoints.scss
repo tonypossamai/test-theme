@@ -1,0 +1,39 @@
+/// Tablet helper functions that makes declaring foundation breakpoints simpler
+/// @example scss - Tablet up media query
+///     // @mixin tablet {
+///         // color: red;
+///     // }
+
+@mixin phablet {
+    @include mq(small) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @include mq(medium) {
+        @content;
+    }
+}
+
+/// Desktop helper functions that makes declaring foundation breakpoints simpler
+/// @example scss - Tablet up media query
+///     // @mixin desktop {
+///         // color: red;
+///     // }
+@mixin desktop {
+    @include mq(large) {
+        @content;
+    }
+}
+
+/// Desktop large helper functions that makes declaring foundation breakpoints simpler
+/// @example scss - Tablet up media query
+///     // @mixin desktop-large {
+///         // color: red;
+///     // }
+@mixin desktop-large {
+    @include mq(xlarge) {
+        @content;
+    }
+}

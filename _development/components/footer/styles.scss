@@ -1,0 +1,75 @@
+.footer {
+    @include layout-margin-top;
+    @include layout-padding-top;
+    @include layout-padding-bottom(0.5);
+
+    background: color('grey');
+
+    &__inner {
+        @include make-container;
+
+        max-width: width('normal');
+    }
+
+    &__logo {
+        @include layout-margin-bottom;
+
+        max-width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &__menu {
+        @include list-reset-hard;
+        @include make-row;
+        @include layout-margin;
+
+        justify-content: space-between;
+
+        > * {
+            @include make-column;
+
+            // Makes each of the columns be equal width without hard coding the
+            // amount of columns
+            flex-basis: calc(100% / 6);
+            flex-grow: 1;
+
+            > a {
+                margin-bottom: space('paragraph') / 2;
+                font-size: 1.2em;
+                font-weight: $base-bold-font-weight;
+            }
+        }
+
+        ul {
+            @include list-reset-hard;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+
+            @include interact {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__social {
+        @include list-reset-hard;
+        @include layout-margin(0.5);
+        @include make-row;
+
+        justify-content: center;
+
+        > * {
+            @include make-column;
+        }
+    }
+
+    &__signature {
+        @include no-first-last-margin;
+
+        text-align: center;
+    }
+}

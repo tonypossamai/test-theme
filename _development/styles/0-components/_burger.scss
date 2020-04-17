@@ -1,0 +1,56 @@
+@mixin burger($size: 30px, $thickness: 3px, $spacing: 10px, $color: currentColor) {
+    @include button-reset;
+
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: $size + 24px; // the 10px just adds some padding round the lines
+    height: $size + 24px; // the 10px just adds some padding round the lines
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 100%;
+    color: $color;
+    transition: transition(color, background-color, transform);
+
+    .burger__line {
+        position: absolute;
+        display: block;
+        width: $size;
+        height: $thickness;
+        margin: 0;
+        background-color: $color;
+        border-radius: $base-border-radius;
+        color: $color;
+        content: '';
+        transition: transition(opacity, transform, top);
+
+        &--1 {
+            transform: translateY(-#{$spacing});
+        }
+
+        &--3 {
+            transform: translateY(#{$spacing});
+        }
+    }
+}
+
+@mixin burger-hover {
+    box-shadow: none;
+}
+
+@mixin burger-active {
+    .burger__line {
+        &--1 {
+            transform: rotate(45deg);
+        }
+
+        &--2 {
+            opacity: 0;
+        }
+
+        &--3 {
+            transform: rotate(-45deg);
+        }
+    }
+}

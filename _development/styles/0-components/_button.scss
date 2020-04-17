@@ -1,0 +1,49 @@
+@mixin granola-button {
+    @include granola-button-color(
+        $text: color('white'),
+        $background: color('black'),
+        $border: color('black'),
+    );
+
+    @include interact {
+        @include granola-button-color(
+            $text: color('black'),
+            $background: color('white'),
+            $border: color('black'),
+        );
+    }
+}
+
+// [1] Remove the underline if this is an a tag
+@mixin granola-button-base(
+    $text: color('white'),
+    $background: color('blue'),
+    $border: color('blue')
+) {
+    @include button-reset;
+
+    display: inline-block;
+    padding: $button-padding-vertical $button-padding-horizontal;
+    border: 2px solid $border;
+    border-radius: $base-border-radius;
+    cursor: pointer;
+    text-decoration: none; // [1]
+    transition: transition(color, background-color, border-color, box-shadow, transform);
+
+    @include interact {
+        @include no-focus-not-accessible;
+
+        box-shadow: 0 0 0 4px $base-focus-color;
+        text-decoration: none;
+    }
+}
+
+@mixin granola-button-color(
+    $text,
+    $background,
+    $border
+) {
+    border-color: $border;
+    background-color: $background;
+    color: $text;
+}

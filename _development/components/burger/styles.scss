@@ -1,0 +1,19 @@
+.burger {
+    @include burger($size: 25px, $thickness: 3px, $spacing: 10px);
+
+    border: 2px solid color('blue');
+    color: color('blue');
+
+    @include interact {
+        @include no-focus-not-accessible;
+        @include burger-hover;
+
+        border-color: color('blue'); // This is only here because we apply styles on the base button element
+        background: color('blue');
+        color: color('white');
+    }
+
+    &.active {
+        @include burger-active;
+    }
+}
